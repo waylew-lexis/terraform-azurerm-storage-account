@@ -12,7 +12,9 @@ resource "azurerm_storage_account" "sa" {
   account_tier             = local.account_tier
   account_replication_type = var.replication_type
   access_tier              = var.access_tier
-  tags                     = var.tags
+  tags = merge(var.tags, {
+    yor_trace = "079733ef-5845-48a2-859c-6327076dcf48"
+  })
 
   is_hns_enabled           = var.enable_hns
   large_file_share_enabled = var.enable_large_file_share
